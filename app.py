@@ -14,15 +14,16 @@ st.set_page_config(
     layout="wide"
 )
 
-def  download_data():
-    file_path = 'data/crime_final.csv'
-    
+def download_data():
+    file_path = 'data/crime_50k.csv'
     if not os.path.exists(file_path):
         os.makedirs('data', exist_ok=True)
         import gdown
-        file_id = "1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-"
-        url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
-        gdown.download(url, file_path, quiet=False, fuzzy=True)
+        file_id = "1TztfyVq9W2iGijOXWxSfABDHAoitPShw"
+        gdown.download(
+            f"https://drive.google.com/uc?id={file_id}",
+            file_path, quiet=False, fuzzy=True
+        )
     return file_path
 
 @st.cache_data

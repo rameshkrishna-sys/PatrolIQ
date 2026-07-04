@@ -1,0 +1,23 @@
+artifact_path: file:///c:/Users/Admin/Documents/PatrolIQ/Notebook/mlruns/1/models/m-fd692d7371c34ba387bf0a68b930711d/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.14.0
+model_id: m-fd692d7371c34ba387bf0a68b930711d
+model_size_bytes: 2008883
+model_uuid: m-fd692d7371c34ba387bf0a68b930711d
+prompts: null
+run_id: c24b47b99ed443ef8eb90939e5fab284
+utc_time_created: '2026-06-29 13:00:13.161013'

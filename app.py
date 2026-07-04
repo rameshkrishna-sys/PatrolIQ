@@ -20,14 +20,25 @@ def load_data():
     
     if not os.path.exists(file_path):
         os.makedirs('data', exist_ok=True)
-        st.info("Downloading data from Google Drive...")
-        import gdown
-        file_id = "https://drive.google.com/file/d/1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-/view?usp=sharing"
-        gdown.download(f"https://drive.google.com/uc?id={file_id}", file_path, quiet=False)
+        try:
+            import gdown
+            file_id = "1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-"
+            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
+            with st.spinner("Downloading data... (first load only)"):
+                gdown.download(url, file_path, quiet=False, fuzzy=True)
+        except Exception as e:
+            st.error(f"Failed to download data: {e}")
+            st.stop()
     
     df = pd.read_csv(file_path)
     df['Date'] = pd.to_datetime(df['Date'])
     return df
+
+df = load_data()
+
+if df is None or df.empty:
+    st.error("Data failed to load.")
+    st.stop()
 
 #  Sidebar navigation 
 st.sidebar.title("🚔 PatrolIQ")

@@ -22,7 +22,7 @@ def load_data():
         os.makedirs('data', exist_ok=True)
         st.info("Downloading data from Google Drive...")
         import gdown
-        file_id = "https://drive.google.com/file/d/1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-/view?usp=drive_link"
+        file_id = "https://drive.google.com/file/d/1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-/view?usp=sharing"
         gdown.download(f"https://drive.google.com/uc?id={file_id}", file_path, quiet=False)
     
     df = pd.read_csv(file_path)

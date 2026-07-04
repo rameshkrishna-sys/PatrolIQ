@@ -14,27 +14,30 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_data
-def load_data():
+def  download_data():
     file_path = 'data/crime_final.csv'
     
     if not os.path.exists(file_path):
         os.makedirs('data', exist_ok=True)
-        try:
-            import gdown
-            file_id = "1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-"
-            url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
-            with st.spinner("Downloading data... (first load only)"):
-                gdown.download(url, file_path, quiet=False, fuzzy=True)
-        except Exception as e:
-            st.error(f"Failed to download data: {e}")
-            st.stop()
-    
+        import gdown
+        file_id = "1ool8uBUmLJvs8WxSa48Wz_4Cfj4hfMF-"
+        url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm=t"
+        gdown.download(url, file_path, quiet=False, fuzzy=True)
+    return file_path
+
+@st.cache_data
+def load_data(file_path):
     df = pd.read_csv(file_path)
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
-df = load_data()
+with st.spinner("Loading data..."):
+    try:
+        file_path = download_data()
+        df = load_data(file_path)
+    except Exception as e:
+        st.error(f"Data load failed: {e}")
+        st.stop()
 
 if df is None or df.empty:
     st.error("Data failed to load.")

@@ -14,7 +14,7 @@
 
 PatrolIQ analyzes 500,000 Chicago crime records using clustering and dimensionality reduction techniques to identify crime hotspots, uncover temporal patterns, and deliver actionable insights for law enforcement agencies.
 
-![Overview](images/overview.png)
+![Overview](images/overview.jpg)
 
 ---
 
@@ -70,7 +70,7 @@ Cloud Deployment
 
 Three clustering algorithms applied to latitude/longitude coordinates to identify crime hotspots across Chicago districts.
 
-![Geographic Clustering](images/geographic.png)
+![Geographic Clustering](images/geographic.jpg)
 
 | Algorithm | Silhouette Score | Davies-Bouldin |
 |---|---|---|
@@ -84,7 +84,7 @@ Three clustering algorithms applied to latitude/longitude coordinates to identif
 
 ## ⏰ Temporal Crime Patterns
 
-![Temporal Analysis](images/temporal.png)
+![Temporal Analysis](images/temporal.jpg)
 
 Key findings:
 - Peak crime hours: **10 PM – 2 AM**
@@ -96,7 +96,7 @@ Key findings:
 
 ## 📉 Dimensionality Reduction
 
-![PCA Analysis](images/pca.png)
+![PCA Analysis](images/pca.jpg)
 
 - **PCA:** Reduced 22 features to 3 principal components capturing 70%+ variance
 - **PC1** (~30% variance) — driven by geographic location features
@@ -106,7 +106,7 @@ Key findings:
 
 ## 🧪 MLflow Experiment Tracking
 
-![MLflow Results](images/mlflow.png)
+![MLflow Results](images/mlflow.jpg)
 
 All clustering experiments tracked with:
 - Silhouette Score

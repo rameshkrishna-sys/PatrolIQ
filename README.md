@@ -3,10 +3,10 @@
 > A comprehensive urban crime intelligence platform leveraging unsupervised machine learning to analyze crime patterns and optimize police resource allocation across Chicago.
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://patroliq-6aaactck2qqtdfwpqn9hi8.streamlit.app/)
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![MLflow](https://img.shields.io/badge/MLflow-2.14-orange)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.36-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+
+## 🔗 Live App
+
+**👉 [Click here to open PatrolIQ](https://patroliq-6aaactck2qqtdfwpqn9hi8.streamlit.app/)**
 
 ---
 

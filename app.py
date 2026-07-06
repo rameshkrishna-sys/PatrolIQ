@@ -204,7 +204,7 @@ elif page == "📉 Dimensionality Reduction":
 elif page == "🧪 MLflow Results":
     st.title("🧪 MLflow Experiment Results")
 
-    db_path = os.path.abspath("../mlflow.db")
+    db_path = os.path.abspath("mlflow.db")
     mlflow.set_tracking_uri(f"sqlite:///{db_path}")
 
     runs = mlflow.search_runs(experiment_names=["PatrolIQ_Clustering"])

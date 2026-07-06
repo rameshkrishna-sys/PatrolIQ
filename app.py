@@ -5,7 +5,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import mlflow
 import os
-import gdown
 
 #  Page config 
 st.set_page_config(
@@ -14,35 +13,23 @@ st.set_page_config(
     layout="wide"
 )
 
-def download_data():
-    file_path = 'data/crime_50k.csv'
+@st.cache_data
+def load_data():
+    file_path = 'data/crime_final.csv'
     if not os.path.exists(file_path):
         os.makedirs('data', exist_ok=True)
-        import gdown
-        file_id = "1TztfyVq9W2iGijOXWxSfABDHAoitPShw"
-        gdown.download(
-            f"https://drive.google.com/uc?id={file_id}",
-            file_path, quiet=False, fuzzy=True
+        from huggingface_hub import hf_hub_download
+        hf_hub_download(
+            repo_id="Kaldor4evr/patroliq-chicago-crime",
+            filename="crime_final.csv",
+            repo_type="dataset",
+            local_dir="data"
         )
-    return file_path
-
-@st.cache_data
-def load_data(file_path):
     df = pd.read_csv(file_path)
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
-with st.spinner("Loading data..."):
-    try:
-        file_path = download_data()
-        df = load_data(file_path)
-    except Exception as e:
-        st.error(f"Data load failed: {e}")
-        st.stop()
-
-if df is None or df.empty:
-    st.error("Data failed to load.")
-    st.stop()
+df = load_data()
 
 #  Sidebar navigation 
 st.sidebar.title("🚔 PatrolIQ")
